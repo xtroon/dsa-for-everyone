@@ -64,7 +64,7 @@ void levelOrder(Node* root){
         cout << temp->data << " ";
 
         if(temp->left != NULL) q.push(temp->left);
-        if(temp->left != NULL) q.push(temp->right);
+        if(temp->right!= NULL) q.push(temp->right);
     }
 }
 
@@ -92,7 +92,7 @@ void levelOrderLineWise(Node* root){
         cout << temp->data << " ";
 
         if(temp->left != NULL) q.push(temp->left);
-        if(temp->left != NULL) q.push(temp->right);
+        if(temp->right != NULL) q.push(temp->right);
     }
 }
 
