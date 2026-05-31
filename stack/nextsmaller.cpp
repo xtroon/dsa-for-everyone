@@ -10,16 +10,17 @@ int main() {
 
     for(int i=arr.size()-1; i>=0; i--){
 
-        while(!st.empty() && arr[i]<st.top()) st.pop();
+        while(!st.empty() && arr[i]<st.top()){
+            st.pop();
+        }
 
         if(st.empty()) ans[i] = -1;
         else ans[i] = st.top();
-
         st.push(arr[i]);
     }
 
-    for(int val: ans){
-        cout << val << " ";
+    for(int it : ans){
+        cout << it << " ";
     }
     return 0;
 }
