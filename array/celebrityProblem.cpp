@@ -5,7 +5,7 @@ using namespace std;
 
 class Solution {
 public:
-    int celebrity(vector<vector<int>>& mat) {
+    int Brutecelebrity(vector<vector<int>>& mat) {
         int n = mat.size();
         vector<int> iKnow(n,0);
         vector<int> knowMe(n,0);
@@ -25,6 +25,34 @@ public:
         }
         return -1;
     }
+
+    int Efficientcelebrity(vector<vector<int>>& mat) {
+        int n = mat.size();
+
+        // find potential celebrity
+        int candidate = 0;
+
+        for(int i = 1; i < n; i++) {
+            if(mat[candidate][i] == 1) {
+                // candidate knows i
+                // candidate can't be celebrity
+                candidate = i;
+            }
+        }
+
+        // Verify candidate
+        for(int i = 0; i < n; i++) {
+            if(i == candidate) continue;
+
+            // candidate should know nobody
+            // everybody should know candidate
+            if(mat[candidate][i] == 1 || mat[i][candidate] == 0) {
+                return -1;
+            }
+        }
+
+        return candidate;
+    }
 };
 
 int main() {
@@ -35,7 +63,8 @@ int main() {
     };
 
     Solution obj;
-    cout << obj.celebrity(mat) << endl;
+    cout << obj.Brutecelebrity(mat) << endl;
+    cout << obj.Efficientcelebrity(mat) << endl;
 
     return 0;
 }
