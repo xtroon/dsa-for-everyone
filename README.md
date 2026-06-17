@@ -17,7 +17,7 @@ The repository is organized by topic-based folders containing C++ (`.cpp`) solut
 | :--- | :--- |
 | 🗂️ `array` | Kadane's Algorithm, Reverse, Rotate, Intersection, Duplicate detection, Celebrity Problem, Sort 01. |
 | 🔍 `binary Search` | Binary search algorithms and application problems. |
-| 🌳 `binary Tree` | Tree traversals, Height, Count/Sum of Nodes, and structures. |
+| 🌳 `binary Tree` | Tree traversals (Recursive & Iterative Preorder/Inorder, Postorder, Level-order), Height, Count of Nodes, Sum of Nodes. |
 | 🔢 `bit manipulation` | Bitwise operations, setting/clearing bits, and tricks. |
 | 🎯 `greedy` | Greedy choices, optimization problems. |
 | 🔗 `linkedlist` | Singly, Doubly, and Circular Linked Lists implementations. |
