@@ -65,6 +65,33 @@ void inorderTraversal(Node* root){
     }
 }
 
+// Iterative PostOrder Traversal of Binary Tree
+void postTraversal(Node* root){
+
+    stack<Node*> st1, st2;
+    
+    st1.push(root);
+    while( !st1. empty() ){
+        Node* temp = st1.top();
+        st1.pop();
+
+        st2.push(temp);
+
+        if(temp->left){
+            st1.push(temp->left);
+        }
+        if(temp->right){
+            st1.push(temp->right);
+        }
+    }
+    
+    while(!st2.empty()){
+        cout << st2.top()->data << " ";
+        st2.pop();
+    }
+
+}  
+
 
 int main() {
     vector<int> arr = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
@@ -77,6 +104,10 @@ int main() {
 
     cout << "In Order" << endl; 
     inorderTraversal(root);
+    cout << endl;
+
+    cout << "Post Order" << endl; 
+    postTraversal(root);
     cout << endl;
 
 
