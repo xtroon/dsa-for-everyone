@@ -14,7 +14,7 @@ struct TreeNode {
 };
 
 class Solution {
-public:
+   public:
     unordered_map<TreeNode*, TreeNode*> parent;
 
     void inorder(TreeNode* root) {
@@ -27,9 +27,8 @@ public:
         inorder(root->right);
     }
 
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int k){
-        
-        inorder(root);   // build parent map
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        inorder(root);  // build parent map
 
         queue<TreeNode*> q;
         q.push(target);
@@ -37,29 +36,29 @@ public:
         unordered_set<TreeNode*> visited;
         visited.insert(target);
 
-        while(!q.empty()){
+        while (!q.empty()) {
             int n = q.size();
 
-            if(k == 0) break;
+            if (k == 0) break;
 
-            while(n--){
+            while (n--) {
                 TreeNode* temp = q.front();
                 q.pop();
 
-                //left
-                if(temp->left && !visited.count(temp->left)){
+                // left
+                if (temp->left && !visited.count(temp->left)) {
                     q.push(temp->left);
                     visited.insert(temp->left);
                 }
 
-                //right
-                if(temp->right && !visited.count(temp->right)){
+                // right
+                if (temp->right && !visited.count(temp->right)) {
                     q.push(temp->right);
                     visited.insert(temp->right);
                 }
 
-                //parent
-                if(parent.count(temp) && !visited.count(parent[temp])){
+                // parent
+                if (parent.count(temp) && !visited.count(parent[temp])) {
                     q.push(parent[temp]);
                     visited.insert(parent[temp]);
                 }
@@ -68,7 +67,7 @@ public:
         }
 
         vector<int> ans;
-        while(!q.empty()){
+        while (!q.empty()) {
             ans.push_back(q.front()->val);
             q.pop();
         }
@@ -101,7 +100,7 @@ int main() {
     root->left->right->left = new TreeNode(7);
     root->left->right->right = new TreeNode(4);
 
-    TreeNode* target = root->left; // Node 5
+    TreeNode* target = root->left;  // Node 5
     int k = 2;
 
     Solution obj;

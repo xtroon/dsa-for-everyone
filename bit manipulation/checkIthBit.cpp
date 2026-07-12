@@ -2,11 +2,9 @@
 using namespace std;
 
 class Solution {
-public:
-
+   public:
     // Brute Force: Convert to binary string - O(logN)
     bool checkKthBitBrute(int n, int k) {
-
         string binary = "";
 
         while (n > 0) {
@@ -14,20 +12,16 @@ public:
             n /= 2;
         }
 
-        if (k >= binary.size())
-            return false;
+        if (k >= binary.size()) return false;
 
         return binary[k] == '1';
     }
 
     // Optimal: Bit Manipulation - O(1)
-    bool checkKthBitOptimal(int n, int k) {
-        return ((n >> k) & 1);
-    }
+    bool checkKthBitOptimal(int n, int k) { return ((n >> k) & 1); }
 };
 
 int main() {
-
     Solution obj;
 
     int n = 13;

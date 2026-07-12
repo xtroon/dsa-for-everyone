@@ -1,26 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution
-{
-public:
-    bool dfs(int node, vector<int> adj[],
-             vector<int> &vis, vector<int> &pathVis)
-    {
+class Solution {
+   public:
+    bool dfs(int node, vector<int> adj[], vector<int> &vis, vector<int> &pathVis) {
         vis[node] = 1;
         pathVis[node] = 1;
-        for (int nei : adj[node])
-        {
+        for (int nei : adj[node]) {
             // Visit unvisited neighbour
-            if (!vis[nei])
-            {
-                if (dfs(nei, adj, vis, pathVis))
-                    return true;
+            if (!vis[nei]) {
+                if (dfs(nei, adj, vis, pathVis)) return true;
             }
             // Neighbour already exists in current DFS path
             // => Back edge => Cycle
-            else if (pathVis[nei])
-            {
+            else if (pathVis[nei]) {
                 return true;
             }
         }
@@ -29,26 +22,20 @@ public:
         return false;
     }
 
-    bool isCycle(int V, vector<int> adj[])
-    {
+    bool isCycle(int V, vector<int> adj[]) {
         vector<int> vis(V, 0);
         vector<int> pathVis(V, 0);
         // Handle disconnected graph
-        for (int i = 0; i < V; i++)
-        {
-            if (!vis[i])
-            {
-                if (dfs(i, adj, vis, pathVis))
-                    return true;
+        for (int i = 0; i < V; i++) {
+            if (!vis[i]) {
+                if (dfs(i, adj, vis, pathVis)) return true;
             }
         }
         return false;
     }
 };
 
-int main()
-{
-
+int main() {
     // 0 -> 1 -> 2 -> 0 (Cycle)
     vector<int> adj[3];
     adj[0].push_back(1);

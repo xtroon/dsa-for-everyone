@@ -2,7 +2,7 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     int solve(vector<int>& bt) {
         sort(bt.begin(), bt.end());
 

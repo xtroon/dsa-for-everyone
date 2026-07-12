@@ -2,12 +2,10 @@
 using namespace std;
 
 class Solution {
-public:
-
+   public:
     // ===================== BFS =====================
 
     bool bfs(int start, vector<int> adj[], vector<int>& vis) {
-
         // {current node, parent}
         queue<pair<int, int>> q;
 
@@ -37,18 +35,15 @@ public:
     }
 
     bool isCycleBFS(int V, vector<int> adj[]) {
-
         vector<int> vis(V, 0);
         // Handle disconnected graph
         for (int i = 0; i < V; i++) {
             if (!vis[i]) {
-                if (bfs(i, adj, vis))
-                    return true;
+                if (bfs(i, adj, vis)) return true;
             }
         }
         return false;
     }
-
 
     // ===================== DFS =====================
 
@@ -58,8 +53,7 @@ public:
         for (int nei : adj[node]) {
             // Visit unvisited neighbour
             if (!vis[nei]) {
-                if (dfs(nei, node, adj, vis))
-                    return true;
+                if (dfs(nei, node, adj, vis)) return true;
             }
 
             // Already visited and not parent
@@ -76,8 +70,7 @@ public:
         // Handle disconnected graph
         for (int i = 0; i < V; i++) {
             if (!vis[i]) {
-                if (dfs(i, -1, adj, vis))
-                    return true;
+                if (dfs(i, -1, adj, vis)) return true;
             }
         }
 
@@ -86,7 +79,6 @@ public:
 };
 
 int main() {
-
     // Graph:
     //
     // 1 ----- 2
@@ -95,12 +87,7 @@ int main() {
     //
     // No cycle
 
-    vector<int> adj[4] = {
-        {},
-        {2},
-        {1, 3},
-        {2}
-    };
+    vector<int> adj[4] = {{}, {2}, {1, 3}, {2}};
 
     Solution obj;
 

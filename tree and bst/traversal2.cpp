@@ -1,57 +1,54 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-class Node{
-public: 
+class Node {
+   public:
     int data;
     Node* left;
     Node* right;
 
-    Node(int val){
+    Node(int val) {
         data = val;
         left = right = NULL;
     }
 };
 
 static int idx = -1;
-Node* buildTree(vector<int> preorder){
+Node* buildTree(vector<int> preorder) {
     idx++;
-    if(preorder[idx] == -1) return NULL;
+    if (preorder[idx] == -1) return NULL;
     Node* root = new Node(preorder[idx]);
 
-    root->left = buildTree(preorder); //left part
-    root->right = buildTree(preorder); //right part
+    root->left = buildTree(preorder);   // left part
+    root->right = buildTree(preorder);  // right part
 
     return root;
 }
 
-
 // Iterative Preorder Traversal of Binary Tree
-void preorderTraversal(Node* root){
+void preorderTraversal(Node* root) {
     stack<Node*> st;
     st.push(root);
 
-    while( !st.empty()){
+    while (!st.empty()) {
         Node* temp = st.top();
 
         st.pop();
 
         cout << temp->data << " ";
 
-        if(temp->right) st.push(temp->right);
-        if(temp->left) st.push(temp->left);
+        if (temp->right) st.push(temp->right);
+        if (temp->left) st.push(temp->left);
     }
 }
 
-
 // Iterative Inorder Traversal of Binary Tree
-void inorderTraversal(Node* root){
-
+void inorderTraversal(Node* root) {
     stack<Node*> st;
     Node* temp = root;
 
-    while( temp || !st.empty()){
-        while(temp){
+    while (temp || !st.empty()) {
+        while (temp) {
             st.push(temp);
             temp = temp->left;
         }
@@ -66,50 +63,46 @@ void inorderTraversal(Node* root){
 }
 
 // Iterative PostOrder Traversal of Binary Tree
-void postTraversal(Node* root){
-
+void postTraversal(Node* root) {
     stack<Node*> st1, st2;
-    
+
     st1.push(root);
-    while( !st1. empty() ){
+    while (!st1.empty()) {
         Node* temp = st1.top();
         st1.pop();
 
         st2.push(temp);
 
-        if(temp->left){
+        if (temp->left) {
             st1.push(temp->left);
         }
-        if(temp->right){
+        if (temp->right) {
             st1.push(temp->right);
         }
     }
-    
-    while(!st2.empty()){
+
+    while (!st2.empty()) {
         cout << st2.top()->data << " ";
         st2.pop();
     }
-
-}  
-
+}
 
 int main() {
     vector<int> arr = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
 
     Node* root = buildTree(arr);
 
-    cout << "Pre Order" << endl; 
+    cout << "Pre Order" << endl;
     preorderTraversal(root);
     cout << endl;
 
-    cout << "In Order" << endl; 
+    cout << "In Order" << endl;
     inorderTraversal(root);
     cout << endl;
 
-    cout << "Post Order" << endl; 
+    cout << "Post Order" << endl;
     postTraversal(root);
     cout << endl;
-
 
     return 0;
 }

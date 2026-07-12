@@ -2,11 +2,9 @@
 using namespace std;
 
 class Solution {
-public:
-
+   public:
     // XOR from 1 to n
     int xorTillN(int n) {
-
         if (n % 4 == 0) return n;
         if (n % 4 == 1) return 1;
         if (n % 4 == 2) return n + 1;
@@ -15,14 +13,10 @@ public:
     }
 
     // XOR from l to r
-    int findXOR(int l, int r) {
-
-        return xorTillN(r) ^ xorTillN(l - 1);
-    }
+    int findXOR(int l, int r) { return xorTillN(r) ^ xorTillN(l - 1); }
 };
 
 int main() {
-
     Solution obj;
 
     int l, r;
@@ -30,8 +24,7 @@ int main() {
     cout << "Enter l and r: ";
     cin >> l >> r;
 
-    cout << "XOR from " << l << " to " << r << " = "
-         << obj.findXOR(l, r) << endl;
+    cout << "XOR from " << l << " to " << r << " = " << obj.findXOR(l, r) << endl;
 
     return 0;
 }

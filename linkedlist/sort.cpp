@@ -2,7 +2,7 @@
 using namespace std;
 
 class Node {
-public:
+   public:
     int data;
     Node* next;
 
@@ -13,17 +13,14 @@ public:
 };
 
 Node* merge(Node* left, Node* right) {
-
     Node* dummy = new Node(-1);
     Node* temp = dummy;
 
-    while(left && right) {
-
-        if(left->data <= right->data) {
+    while (left && right) {
+        if (left->data <= right->data) {
             temp->next = left;
             left = left->next;
-        }
-        else {
+        } else {
             temp->next = right;
             right = right->next;
         }
@@ -31,16 +28,17 @@ Node* merge(Node* left, Node* right) {
         temp = temp->next;
     }
 
-    if(left) temp->next = left;
-    else temp->next = right;
+    if (left)
+        temp->next = left;
+    else
+        temp->next = right;
 
     return dummy->next;
 }
 
 Node* sortList(Node* head) {
-
     // base case
-    if(head == nullptr || head->next == nullptr) {
+    if (head == nullptr || head->next == nullptr) {
         return head;
     }
 
@@ -48,7 +46,7 @@ Node* sortList(Node* head) {
     Node* slow = head;
     Node* fast = head->next;
 
-    while(fast && fast->next) {
+    while (fast && fast->next) {
         slow = slow->next;
         fast = fast->next->next;
     }
@@ -68,17 +66,16 @@ Node* sortList(Node* head) {
 }
 
 void push_back(Node*& head, int val) {
-
     Node* newNode = new Node(val);
 
-    if(head == nullptr) {
+    if (head == nullptr) {
         head = newNode;
         return;
     }
 
     Node* temp = head;
 
-    while(temp->next != nullptr) {
+    while (temp->next != nullptr) {
         temp = temp->next;
     }
 
@@ -86,8 +83,7 @@ void push_back(Node*& head, int val) {
 }
 
 void printList(Node* head) {
-
-    while(head) {
+    while (head) {
         cout << head->data << " ";
         head = head->next;
     }
@@ -96,7 +92,6 @@ void printList(Node* head) {
 }
 
 int main() {
-
     // 4 -> 2 -> 1 -> 3
 
     Node* head = nullptr;

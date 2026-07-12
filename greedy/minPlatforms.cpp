@@ -2,7 +2,7 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     int minPlatform(vector<int>& arr, vector<int>& dep) {
         int i = 0, j = 0;
 
