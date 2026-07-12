@@ -1,0 +1,35 @@
+name: Auto Format C++
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Format files
+        run: |
+          find . -regex '.*\.\(cpp\|cc\|cxx\|h\|hpp\)' -exec clang-format -style="{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 100}" -i {} \;
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          if ! git diff --cached --quiet; then
+            git commit -m "style: auto-format C++"
+            git push
+          fi
