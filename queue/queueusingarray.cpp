@@ -7,7 +7,7 @@ class Queue {
     int rear;
     int size;
 
-public:
+   public:
     Queue(int n) {
         size = n;
         arr = new int[size];
@@ -15,13 +15,9 @@ public:
         rear = -1;
     }
 
-    bool isEmpty() {
-        return rear < front;
-    }
+    bool isEmpty() { return rear < front; }
 
-    bool isFull() {
-        return rear == size - 1;
-    }
+    bool isFull() { return rear == size - 1; }
 
     void enqueue(int data) {
         if (isFull()) {

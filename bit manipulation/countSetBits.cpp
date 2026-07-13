@@ -2,10 +2,9 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     // Better
     int countSetBitsBetter(int n) {
-
         int cnt = 0;
 
         while (n > 0) {
@@ -18,7 +17,6 @@ public:
 
     // Optimal (Brian Kernighan's Algorithm)
     int countSetBitsOptimal(int n) {
-
         int cnt = 0;
 
         while (n > 0) {
@@ -31,18 +29,15 @@ public:
 };
 
 int main() {
-
     Solution obj;
 
     int n;
     cout << "Enter n: ";
     cin >> n;
 
-    cout << "Better      : "
-         << obj.countSetBitsBetter(n) << endl;
+    cout << "Better      : " << obj.countSetBitsBetter(n) << endl;
 
-    cout << "Optimal     : "
-         << obj.countSetBitsOptimal(n) << endl;
+    cout << "Optimal     : " << obj.countSetBitsOptimal(n) << endl;
 
     return 0;
 }

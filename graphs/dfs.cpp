@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void dfs(int node, vector<int> adj[], vector<int>& vis, vector<int>& ls){
+void dfs(int node, vector<int> adj[], vector<int>& vis, vector<int>& ls) {
     vis[node] = true;
     ls.push_back(node);
 
-    for(auto it : adj[node]){
-        if(!vis[it]){
+    for (auto it : adj[node]) {
+        if (!vis[it]) {
             dfs(it, adj, vis, ls);
         }
     }

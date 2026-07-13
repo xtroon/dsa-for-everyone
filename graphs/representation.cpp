@@ -1,17 +1,16 @@
 #include <iostream>
-#include <unordered_map>
 #include <list>
+#include <unordered_map>
 using namespace std;
 template <typename T>
 
 class Graph {
-public:
+   public:
     unordered_map<T, list<T>> adj;
 
     // direction = 0 -> Undirected
     // direction = 1 -> Directed
     void addEdge(T u, T v, bool direction) {
-
         // Edge from u to v
         adj[u].push_back(v);
 
@@ -22,9 +21,7 @@ public:
     }
 
     void printAdjList() {
-
         for (auto i : adj) {
-
             cout << i.first << " -> ";
 
             for (auto j : i.second) {
@@ -37,13 +34,11 @@ public:
 };
 
 int main() {
-
     Graph<int> g;
 
     int n, m;
     cout << "Enter number of vertices and edges: ";
     cin >> n >> m;
-
 
     cout << "Enter the edges:\n";
 

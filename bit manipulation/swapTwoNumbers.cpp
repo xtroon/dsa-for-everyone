@@ -8,10 +8,8 @@ void swapXOR(int &a, int &b) {
 }
 
 int main() {
-
     int a = 5, b = 3;
 
-    
     cout << a << " " << b << endl;
     swapXOR(a, b);
     cout << "After swap" << endl;

@@ -2,10 +2,8 @@
 using namespace std;
 
 class Solution {
-public:
-
+   public:
     vector<int> dijkstra(int V, vector<vector<int>> adj[], int src) {
-
         // {distance, node}
         set<pair<int, int>> st;
 
@@ -15,7 +13,6 @@ public:
         st.insert({0, src});
 
         while (!st.empty()) {
-
             auto it = *(st.begin());
 
             int dis = it.first;
@@ -25,13 +22,11 @@ public:
 
             // Traverse all neighbours
             for (auto edge : adj[node]) {
-
                 int adjNode = edge[0];
                 int edgeWeight = edge[1];
 
                 // Relax the edge
                 if (dis + edgeWeight < dist[adjNode]) {
-
                     // Remove previous distance if it exists
                     if (dist[adjNode] != INT_MAX) {
                         st.erase({dist[adjNode], adjNode});
@@ -49,7 +44,6 @@ public:
 };
 
 int main() {
-
     int V = 3;
 
     vector<vector<int>> adj[3];
@@ -63,8 +57,7 @@ int main() {
 
     vector<int> ans = obj.dijkstra(V, adj, 0);
 
-    for (int x : ans)
-        cout << x << " ";
+    for (int x : ans) cout << x << " ";
 
     return 0;
 }

@@ -2,10 +2,8 @@
 using namespace std;
 
 class Solution {
-public:
-
-    void dfs(int node, vector<int> adj[],
-             vector<int>& vis, stack<int>& st) {
+   public:
+    void dfs(int node, vector<int> adj[], vector<int>& vis, stack<int>& st) {
         vis[node] = 1;
         for (int nei : adj[node]) {
             if (!vis[nei]) {
@@ -36,7 +34,6 @@ public:
 };
 
 int main() {
-
     // Graph:
     //
     // 5 → 2 ← 4
@@ -55,8 +52,7 @@ int main() {
 
     Solution obj;
     vector<int> ans = obj.topoSort(V, adj);
-    
-    for (int x : ans)
-        cout << x << " ";
+
+    for (int x : ans) cout << x << " ";
     return 0;
 }
