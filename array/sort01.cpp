@@ -1,3 +1,5 @@
+//problem link- https://www.geeksforgeeks.org/problems/segregate-0s-and-1s5106/1
+
 #include <iostream>
 using namespace std;
 

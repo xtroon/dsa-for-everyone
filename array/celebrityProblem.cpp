@@ -1,5 +1,5 @@
+//  probllem link - https://www.geeksforgeeks.org/dsa/the-celebrity-problem/
 // everyone knows bro, but bro knows no one
-
 #include <bits/stdc++.h>
 using namespace std;
 
