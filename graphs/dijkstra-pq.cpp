@@ -4,7 +4,7 @@ using namespace std;
 class Solution {
    public:
     vector<int> dijkstra(int V, vector<vector<int>> adj[], int src) {
-        // {distance, node}
+        // {distance, node in min-heap}
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
         vector<int> dist(V, INT_MAX);
