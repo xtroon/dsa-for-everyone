@@ -1,3 +1,5 @@
+//problem link- https://www.naukri.com/code360/problems/intersection-of-2-arrays_1082149
+
 #include <bits/stdc++.h>
 using namespace std;
 
