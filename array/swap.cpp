@@ -1,4 +1,4 @@
-//problem link- https://www.naukri.com/code360/problems/swap-alternate_624941
+// problem link- https://www.naukri.com/code360/problems/swap-alternate_624941
 
 #include <bits/stdc++.h>
 using namespace std;

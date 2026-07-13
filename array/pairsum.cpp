@@ -1,5 +1,5 @@
 
-//problem link- https://www.naukri.com/code360/problems/pair-sum_697295
+// problem link- https://www.naukri.com/code360/problems/pair-sum_697295
 #include <bits/stdc++.h>
 using namespace std;
 

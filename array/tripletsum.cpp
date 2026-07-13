@@ -1,4 +1,4 @@
-//problem link- https://www.naukri.com/code360/problems/three-sum_6922132
+// problem link- https://www.naukri.com/code360/problems/three-sum_6922132
 #include <bits/stdc++.h>
 using namespace std;
 
