@@ -1,11 +1,13 @@
-# 📚 My DSA Practice Vault
 
-Welcome to my personal Data Structures & Algorithms (DSA) workspace! 🚀
+# 📚 Open DSA Practice Vault
 
-This repository is a dedicated space for solving coding problems and implementing DSA concepts. I use this repository to:
+Welcome to our community Data Structures & Algorithms (DSA) workspace! 🚀
 
-- 💾 Save and organize standard implementations locally in VS Code for quick reference.
-- 🛠️ Experiment with clean C++ implementations.
+This repository is an open-source, dedicated space for solving coding problems and implementing DSA concepts. We use this repository to:
+
+- 💾 Save and organize standard implementations for quick reference.
+- 🛠️ Experiment with clean and optimized implementations.
+- 🤝 Learn and grow together by sharing solutions.
 
 ---
 
@@ -33,7 +35,7 @@ g++ duplicate.cpp -o duplicate
 .\\duplicate.exe
 ```
 
-_Alternatively, click the **Run** button at the top-right corner if you have Code Runner installed._
+_Alternatively, click the **Run** button at the top-right corner if you have Code Runner Extension installed._
 
 ---
 
