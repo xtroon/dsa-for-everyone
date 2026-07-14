@@ -1,3 +1,4 @@
+//problem link -  https://www.geeksforgeeks.org/dsa/calculate-xor-1-n/
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -1,3 +1,4 @@
+//problem link- https://www.geeksforgeeks.org/dsa/check-whether-k-th-bit-set-not/
 #include <bits/stdc++.h>
 using namespace std;
 
