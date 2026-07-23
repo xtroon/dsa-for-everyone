@@ -4,84 +4,84 @@
 
 using namespace std;
 
-//  0/1 Knapsack Problem (2D DP)
+// 0/1 Knapsack Problem (2D DP)
+// items[i][0] = weight (wt), items[i][1] = value (val)
 
-// 1. Brute Force (Pure Recursion)
-// tc: O(2^N) sc: O(N)
-int knapsackBrute(int index, int capacity, const vector<int>& weight, const vector<int>& value) {
-    if (index == 0) {
-        if (weight[0] <= capacity) return value[0];
+// 1. Brute Force (Recursion)
+// tc: O(2^N), sc: O(N)
+int knapsackBrute(int ind, int W, const vector<vector<int>>& items) {
+    if (ind == 0) {
+        if (items[0][0] <= W) return items[0][1];
         return 0;
     }
 
-    int exclude = knapsackBrute(index - 1, capacity, weight, value);
-
+    int exclude = knapsackBrute(ind - 1, W, items);
     int include = 0;
-    if (weight[index] <= capacity) {
-        include = value[index] + knapsackBrute(index - 1, capacity - weight[index], weight, value);
+    if (items[ind][0] <= W) {
+        include = items[ind][1] + knapsackBrute(ind - 1, W - items[ind][0], items);
     }
 
     return max(include, exclude);
 }
 
-// 2. Top-Down Approach (Recursion + Memoization)
-// tc: O(N * Capacity) sc: O(N * Capacity)
-int knapsackMemo(int index, int capacity, const vector<int>& weight, const vector<int>& value, vector<vector<int>>& dp) {
-    
-    if (index == 0) {
-        if (weight[0] <= capacity) return value[0];
+// 2. Memoization (Top-Down)
+// tc: O(N * W), sc: O(N * W)
+int knapsackMemo(int ind, int W, const vector<vector<int>>& items, vector<vector<int>>& dp) {
+    if (ind == 0) {
+        if (items[0][0] <= W) return items[0][1];
         return 0;
     }
 
-    if (dp[index][capacity] != -1) {
-        return dp[index][capacity];
-    }
+    if (dp[ind][W] != -1) return dp[ind][W];
 
-    int exclude = knapsackMemo(index - 1, capacity, weight, value, dp);
-
+    int exclude = knapsackMemo(ind - 1, W, items, dp);
     int include = 0;
-    if (weight[index] <= capacity) {
-        include = value[index] + knapsackMemo(index - 1, capacity - weight[index], weight, value, dp);
+    if (items[ind][0] <= W) {
+        include = items[ind][1] + knapsackMemo(ind - 1, W - items[ind][0], items, dp);
     }
 
-    return dp[index][capacity] = max(include, exclude);
+    return dp[ind][W] = max(include, exclude);
 }
 
-// 3. Bottom-Up Approach (Tabulation)
-// tc: O(N * Capacity) sc: O(N * Capacity)
-int knapsackTabulation(int n, int maxCapacity, const vector<int>& weight, const vector<int>& value) {
-    
-    vector<vector<int>> dp(n, vector<int>(maxCapacity + 1, 0));
-    for (int w = weight[0]; w <= maxCapacity; w++) {
-        dp[0][w] = value[0];
-    }
+// 3. Tabulation (Bottom-Up - 1-based indexing)
+// tc: O(N * W), sc: O(N * W)
+int knapsackTabulation(int n, int W, const vector<vector<int>>& items) {
+    vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
 
-    for (int index = 1; index < n; index++) {
-        for (int cap = 0; cap <= maxCapacity; cap++) {
-            int exclude = dp[index - 1][cap];
+    for (int ind = 1; ind <= n; ind++) {
+        int wt = items[ind - 1][0];
+        int val = items[ind - 1][1];
+
+        for (int w = 1; w <= W; w++) {
+            int exclude = dp[ind - 1][w];
             int include = 0;
-            if (weight[index] <= cap) {
-                include = value[index] + dp[index - 1][cap - weight[index]];
+            if (wt <= w) {
+                include = val + dp[ind - 1][w - wt];
             }
-            dp[index][cap] = max(include, exclude);
+            dp[ind][w] = max(include, exclude);
         }
     }
 
-    return dp[n - 1][maxCapacity];
+    return dp[n][W];
 }
 
 int main() {
-    vector<int> weight = {1, 2, 4, 5};
-    vector<int> value = {5, 4, 8, 6};
-    int maxCapacity = 5;
-    int n = weight.size();
+    // items[i] = {weight, value}
+    vector<vector<int>> items = {
+        {1, 5},
+        {2, 4},
+        {4, 8},
+        {5, 6}
+    };
+    int W = 5;
+    int n = items.size();
 
     cout << "--- 0/1 Knapsack Problem ---" << endl;
 
-    vector<vector<int>> dp(n, vector<int>(maxCapacity + 1, -1));
-    cout << "1. Brute Force (Recursion): " << knapsackBrute(n - 1, maxCapacity, weight, value) << endl;
-    cout << "2. Memoization (Top-Down): " << knapsackMemo(n - 1, maxCapacity, weight, value, dp) << endl;
-    cout << "3. Tabulation (Bottom-Up): " << knapsackTabulation(n, maxCapacity, weight, value) << endl;
+    vector<vector<int>> dp(n, vector<int>(W + 1, -1));
+    cout << "1. Brute Force (Recursion): " << knapsackBrute(n - 1, W, items) << endl;
+    cout << "2. Memoization (Top-Down): " << knapsackMemo(n - 1, W, items, dp) << endl;
+    cout << "3. Tabulation (Bottom-Up): " << knapsackTabulation(n, W, items) << endl;
 
     return 0;
 }
